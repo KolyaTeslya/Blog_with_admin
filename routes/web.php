@@ -19,13 +19,13 @@ Route::group(['namespace' => 'Main'], function () {
 });
 
 Route::group(['namespace' => 'Personal', 'prefix' => 'personal', 'middleware' => ['auth', 'verified']], function () {
-    Route::group(['namespace' => 'Main'], function () {
+    Route::group(['namespace' => 'Main', 'prefix' => 'main'], function () {
         Route::get('/', 'IndexController')->name('personal.main.index');
     });
-    Route::group(['namespace' => 'Post'], function () {
+    Route::group(['namespace' => 'Post', 'prefix' => 'posts'], function () {
         Route::get('/', 'IndexController')->name('personal.post.index');
     });
-    Route::group(['namespace' => 'Comment'], function () {
+    Route::group(['namespace' => 'Comment', 'prefix' => 'comments'], function () {
         Route::get('/', 'IndexController')->name('personal.comment.index');
     });
 });
